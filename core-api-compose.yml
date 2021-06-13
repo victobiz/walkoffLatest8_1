@@ -1,0 +1,46 @@
+configs:
+  common_env.yml:
+    file: ./data/config.yml
+networks:
+  walkoff_network:
+    external: true
+secrets:
+  walkoff_encryption_key:
+    external: true
+  walkoff_internal_key:
+    external: true
+  walkoff_minio_access_key:
+    external: true
+  walkoff_minio_secret_key:
+    external: true
+  walkoff_mongo_key:
+    external: true
+  walkoff_redis_key:
+    external: true
+services:
+  core_api:
+    build:
+      context: ./
+      dockerfile: ./api/Dockerfile
+    configs:
+    - common_env.yml
+      #command: tail -f /app/apps/ssh/1.0.0/api.yaml
+    depends_on:
+    - resource_redis
+    - resource_mongo
+    - core_socketio
+    image: 127.0.0.1:5000/walkoff_core_api:latest
+    networks:
+    - walkoff_network
+    secrets:
+    - walkoff_encryption_key
+    - walkoff_internal_key
+    - walkoff_mongo_key
+    - walkoff_redis_key
+    - walkoff_minio_access_key
+    - walkoff_minio_secret_key
+    volumes:
+    - ./apps:/app/apps
+    - ./api/client/dist:/app/api/client/dist
+    - /var/run/docker.sock:/var/run/docker.sock
+version: '3.5'

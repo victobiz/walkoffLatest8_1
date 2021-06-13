@@ -1,0 +1,35 @@
+configs:
+  common_env.yml:
+    file: ./data/config.yml
+networks:
+  walkoff_network:
+    external: true
+secrets:
+  walkoff_encryption_key:
+    external: true
+  walkoff_internal_key:
+    external: true
+  walkoff_minio_access_key:
+    external: true
+  walkoff_minio_secret_key:
+    external: true
+  walkoff_mongo_key:
+    external: true
+  walkoff_redis_key:
+    external: true
+services:
+  core_socketio:
+    build:
+      context: ./
+      dockerfile: ./socketio/Dockerfile
+    configs:
+    - common_env.yml
+    image: 127.0.0.1:5000/walkoff_core_socketio:latest
+    networks:
+    - walkoff_network
+    ports:
+    - 3000:3000
+    secrets:
+    - walkoff_internal_key
+
+version: '3.5'
