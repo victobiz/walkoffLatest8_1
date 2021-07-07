@@ -1,0 +1,34 @@
+configs:
+  common_env.yml:
+    file: ./data/config.yml
+networks:
+  walkoff_network:
+    external: true
+secrets:
+  walkoff_encryption_key:
+    external: true
+  walkoff_internal_key:
+    external: true
+  walkoff_minio_access_key:
+    external: true
+  walkoff_minio_secret_key:
+    external: true
+  walkoff_mongo_key:
+    external: true
+  walkoff_redis_key:
+    external: true
+services:
+  resource_nginx:
+    depends_on:
+    - core_api
+    - core_socketio
+    image: bitnami/nginx:latest
+    networks:
+    - walkoff_network
+    ports:
+    - 8080:8080
+    volumes:
+    - ./nginx/walkoff.conf:/opt/bitnami/nginx/conf/server_blocks/walkoff.conf:ro
+    - ./nginx/cert.pem:/opt/bitnami/nginx/conf/cert.pem:ro
+    - ./nginx/key.pem:/opt/bitnami/nginx/conf/key.pem:ro
+version: '3.5'
