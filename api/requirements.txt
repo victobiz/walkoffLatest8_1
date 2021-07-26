@@ -1,5 +1,5 @@
 APscheduler >= 3.0.0
-pydantic == 1.6.2
+pydantic == 0.30
 pyyaml >= 3.0
 passlib >= 1.7.0
 semver
@@ -12,7 +12,6 @@ asteval
 cryptography
 tenacity
 uvicorn
-fastapi
 email-validator
 motor
 aiofiles
@@ -24,3 +23,4 @@ websocket-client
 minio == 6.0.0
 aiodocker == 0.14.0
 docker
+fastapi == 0.33.0

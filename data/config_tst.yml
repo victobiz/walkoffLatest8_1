@@ -1,0 +1,45 @@
+# This config file manages paths and values that can be adjusted to adapt Walkoff to your environment.
+
+# Common options
+API_URI: "http://localhost:8080"
+REDIS_URI: "redis://localhost:6379"
+MINIO: "resource_minio:9000"
+MONGO_HOST: "localhost"
+MONGO_PORT: "27016"
+SOCKETIO_URI: "http://localhost:3000"
+
+# Key locations
+ENCRYPTION_KEY_PATH: "/run/secrets/walkoff_encryption_key"
+INTERNAL_KEY_PATH: "/run/secrets/walkoff_internal_key"
+POSTGRES_KEY_PATH: "/run/secrets/walkoff_postgres_key"
+MINIO_ACCESS_KEY_PATH: "/run/secrets/walkoff_minio_access_key"
+MINIO_SECRET_KEY_PATH: "/run/secrets/walkoff_minio_secret_key"
+#REDIS_KEY_PATH: "/app/data/local_key"
+#ENCRYPTION_KEY_PATH: "/app/data/local_global_key"
+#INTERNAL_KEY_PATH: "/app/data/local_key"
+#POSTGRES_KEY_PATH: "/app/data/local_key"
+#MINIO_ACCESS_KEY_PATH: "/app/data/local_key"
+#MINIO_SECRET_KEY_PATH: "/app/data/local_key"
+#MONGO_KEY_PATH: "/app/data/local_key"
+
+# Worker options
+MAX_WORKER_REPLICAS: "10"
+WORKER_TIMEOUT: "30"
+WALKOFF_USERNAME: "internal_user"
+
+# Umpire options
+APPS_PATH: "./apps"
+APP_REFRESH: "60"
+SWARM_NETWORK: "walkoff_default"
+DOCKER_REGISTRY: "127.0.0.1:5000"
+UMPIRE_HEARTBEAT: "1"
+
+# API Gateway options
+DB_TYPE: "postgresql"
+DB_HOST: "localhost"
+SERVER_DB_NAME: "walkoff"
+EXECUTION_DB_NAME: "execution"
+DB_USERNAME: "walkoff"
+
+# App options
+MAX_APP_REPLICAS: "10"

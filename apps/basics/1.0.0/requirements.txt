@@ -1,1 +1,3 @@
 # Hello World has no external Python dependencies
+importlib_metadata
+aioredis == 1.3.1

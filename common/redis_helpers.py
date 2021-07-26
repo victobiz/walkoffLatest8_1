@@ -14,6 +14,7 @@ logger = logging.getLogger("WALKOFF")
 async def connect_to_aioredis_pool(redis_uri) -> aioredis.Redis:
     # Redis client bound to pool of connections (auto-reconnecting).
     redis_pool = await aioredis.create_redis_pool(redis_uri, password=config.get_from_file(config.REDIS_KEY_PATH))
+    # redis_pool = await aioredis.create_redis_pool(redis_uri, password=walkoff123456)
     try:
         yield redis_pool
     finally:

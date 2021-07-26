@@ -42,8 +42,26 @@ class UserModel(IDBaseModel):
     login_count: int = 0
     _name_field = "username"
 
+    class Config:
+        orm_mode = True
+
     @validator('password')
     def hash_pass(cls, password, values):
+        #print('cls - user.py',cls,type(cls))
+        #print('pwd', password,type(password))
+        #print('vals', values,type(values))
+
+        #if (cls == "<class 'UserModel'>"):
+        #    cls = "<class 'api.server.db.user.UserModel'>"
+
+        #if password == None:
+        #   password = "admin"
+        #   cls = "<class 'api.server.db.user.UserModel'>"
+
+        #print('cls - user.py',cls,type(cls))
+        #print('pwd', password)
+        #print('vals', values)
+
         if not values:
             return password
         if values.get("hashed") and not password:
@@ -56,6 +74,7 @@ class UserModel(IDBaseModel):
         elif not values.get("hashed"):
             values["hashed"] = True
             r = pbkdf2_sha512.hash(password)
+            #print('pwd-r',r)
             return r
         else:
             return password

@@ -2,7 +2,7 @@ version: '3.5'
 services:
   core_umpire:
     image: "127.0.0.1:5000/walkoff_core_umpire:latest"
-#    command: python -m umpire.umpire --log-level=debug --disable-worker-autoheal --disable-worker-autoscale
+    #command: python -m umpire.umpire --log-level=debug --disable-worker-autoheal --disable-worker-autoscale
     build:
       context: ./
       dockerfile: umpire/Dockerfile
