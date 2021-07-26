@@ -11,3 +11,4 @@ tenacity
 python-socketio
 requests
 websocket-client
+aioredis
