@@ -10,3 +10,15 @@ docker stack deploy --compose-file base-compose.yml walkoff
 docker stack deploy --compose-file core-api-compose.yml walkoff
 docker stack deploy --compose-file core-socketio-compose.yml walkoff
 ./walkoff.sh up --build --debug
+
+
+To login Mongo db inside the container
+docker exec -it <<container_id>> bash
+To launch mongo db
+mongo --username <<username>> --password <<password>> --port 27016
+
+To login Redis db inside the container
+docker exec -it <<container_id>> bash
+To launch Redis db
+redis-cli
+auth <<password>>
