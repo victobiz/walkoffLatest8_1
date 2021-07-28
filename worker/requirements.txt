@@ -12,3 +12,7 @@ python-socketio
 requests
 websocket-client
 aioredis
+#python-engineio
+#python-engineio == 3.14.2
+#python-socketio == 4.6.0
+#requests == 2.22.0

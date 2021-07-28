@@ -32,7 +32,7 @@ services:
 #      - REDIS_REPLICATION_MODE=master
       - REDIS_MASTER_PASSWORD_FILE=/run/secrets/walkoff_redis_key
       - REDIS_PASSWORD_FILE=/run/secrets/walkoff_redis_key
-#    command: redis-server --bind 0.0.0.0 --requirepass walkoff123456 --maxmemory 256mb --maxmemory-policy allkeys-lru
+    command: redis-server --bind 0.0.0.0 --requirepass walkoff123456 --maxmemory 256mb --maxmemory-policy allkeys-lru
 #    volumes:
 #      - walkoff_resource_redis_volume:/bitnami
     secrets:

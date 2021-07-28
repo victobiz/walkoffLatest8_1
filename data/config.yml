@@ -20,7 +20,7 @@ MONGO_KEY_PATH: "/run/secrets/walkoff_mongo_key"
 
 # Worker options
 MAX_WORKER_REPLICAS: "10"
-WORKER_TIMEOUT: "30"
+WORKER_TIMEOUT: "300000"
 WALKOFF_USERNAME: "internal_user"
 
 # Umpire options
