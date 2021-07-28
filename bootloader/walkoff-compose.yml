@@ -2,7 +2,7 @@ version: '3.5'
 services:
   core_umpire:
     image: "127.0.0.1:5000/walkoff_core_umpire:latest"
-    #command: python -m umpire.umpire --log-level=debug --disable-worker-autoheal --disable-worker-autoscale
+    command: python -m umpire.umpire --log-level=debug --disable-worker-autoheal --disable-worker-autoscale
     build:
       context: ./
       dockerfile: umpire/Dockerfile
@@ -34,7 +34,7 @@ services:
       context: ./
       dockerfile: ./api/Dockerfile
 #    ports:
-#      - '8080:8080'
+#      - '8082:8082'
     networks:
       - walkoff_network
 #    stop_signal: SIGINT
@@ -84,7 +84,7 @@ services:
       - walkoff_network
     ports:
       - '8080:8080'
-#      - '8081:8081' # Uncomment for unsecure HTTP access to API Gateway
+      - '8081:8081' # Uncomment for unsecure HTTP access to API Gateway
     volumes:
       - ./nginx/walkoff.conf:/opt/bitnami/nginx/conf/server_blocks/walkoff.conf:ro
       - ./nginx/cert.pem:/opt/bitnami/nginx/conf/cert.pem:ro
