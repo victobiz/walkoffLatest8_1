@@ -1,0 +1,12 @@
+--docker image prune -f
+--docker rmi -f $(docker images -a -q)
+
+docker network create walkoff_network --driver overlay --scope swarm --attachable
+
+docker build -f socketio/Dockerfile . -t 127.0.0.1:5000/walkoff_core_socketio
+docker build -f api/Dockerfile . -t 127.0.0.1:5000/walkoff_core_api 
+docker build -f worker/Dockerfile . -t 127.0.0.1:5000/walkoff_core_worker
+docker stack deploy --compose-file base-compose.yml walkoff
+docker stack deploy --compose-file core-api-compose.yml walkoff
+docker stack deploy --compose-file core-socketio-compose.yml walkoff
+./walkoff.sh up --build --debug
